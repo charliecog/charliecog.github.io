@@ -54,12 +54,14 @@ main > .intro {
 	font-family: 'Reem Kufi', sans-serif;
 	font-size: 3.75em;
 	font-weight: 600;
+    z-index: 10;
 }
 
 main > .tagline {
 	font-size: 1.5rem;
 	margin: 1.5rem 0;
 	font-weight: 100;
+    z-index: 10;
 }
 
 .icons-social i {
@@ -79,4 +81,14 @@ main > .tagline {
 	margin-left: 0.675rem;;
 	width: 2.65rem;
 	height: 2.65rem;
+}
+
+canvas {
+    position: fixed;
+    top:0;
+    z-index: 1;
+}
+
+.icons-social {
+    z-index: 10;
 }

@@ -28,5 +28,66 @@
 			<a target="_blank" href="https://codepen.io/charliecog/"><i class="fab fa-codepen"></i></a>
     </div>
 	</main>
+    <canvas></canvas>
 </body>
+<script>
+    var canvas = document.querySelector('canvas')
+
+    canvas.width = window.innerWidth
+    canvas.height = window.innerHeight
+
+    var context = canvas.getContext('2d')
+
+    function Circle(x,y,dx,dy,radius, colour) {
+        this.x = x
+        this.y = y
+        this.dx = dx
+        this.dy = dy
+        this.radius = radius
+        this.colour = '#'+(Math.random()*0xFFFFFF<<0).toString(16)
+
+        this.draw = function () {
+            context.beginPath()
+            context.arc(this.x , this.y, this.radius, 0, Math.PI * 2, false)
+            context.strokeStyle = this.colour
+            context.fill()
+            context.fillStyle = this.colour
+        }
+
+        this.update = function () {
+            if(this.x + this.radius>innerWidth || this.x - this.radius < 0){
+                this.dx = -this.dx
+            }
+
+            if(this.y + this.radius>innerHeight || this.y - this.radius < 0){
+                this.dy = -this.dy
+            }
+
+            this.x += this.dx
+            this.y += this.dy
+            this.draw()
+        }
+    }
+
+    var circleArray = []
+
+    for(var i=0; i<100;i++){
+        var radius = 30
+        var x = Math.random() * (innerWidth - radius * 2) + radius
+        var y = Math.random() * (innerHeight - radius * 2) + radius
+        var dx = (Math.random() - 0.5)
+        var dy = (Math.random() - 0.5)
+        circleArray[i] = new Circle(x, y, dx, dy, radius)
+    }
+
+    function animateStuff() {
+        requestAnimationFrame(animateStuff)
+        context.clearRect(0 ,0 , innerWidth, innerHeight)
+        for(var x=0;x<circleArray.length; x++){
+            circleArray[x].update()
+        }
+    }
+
+    animateStuff()
+</script>
 </html>
