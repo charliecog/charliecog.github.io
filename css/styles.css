@@ -32,6 +32,13 @@ html {
 	font-size: 3em;
 }
 
+.icons-social svg {
+    margin-bottom: -0.20rem;
+    margin-left: 0.675rem;;
+    width: 2.65rem;
+    height: 2.65rem;
+}
+
 /* Custom Styles */
 
 main {
@@ -57,6 +64,10 @@ main > .tagline {
 
 .icons-social i {
 	padding: 10px;
+}
+
+.icons-social a .fa-codepen {
+    padding-left: 20px;
 }
 
 .devto {
